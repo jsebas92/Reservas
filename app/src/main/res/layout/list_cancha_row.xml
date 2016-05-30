@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    
+    <TextView
+        android:id="@+id/txtCanchaId"
+        android:layout_width="?android:attr/listPreferredItemHeight"
+        android:layout_height="?android:attr/listPreferredItemHeight"
+        android:layout_alignParentLeft="true"
+        android:gravity="center_vertical"
+        android:textSize="20sp"
+
+        android:textStyle="bold"
+
+        />
+
+    <TextView
+        android:id="@+id/txtCanchaPrecio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/txtCanchaId"
+        android:layout_toRightOf="@id/txtCanchaId"
+
+        android:singleLine="true"
+        />
+
+    <TextView
+        android:id="@+id/txtCanchaDescripcion"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="clip_vertical"
+        android:layout_alignBottom="@id/txtCanchaId"
+        android:layout_below="@id/txtCanchaPrecio"
+        android:layout_toRightOf="@id/txtCanchaId"
+
+        />
+
+
+
+</RelativeLayout>
