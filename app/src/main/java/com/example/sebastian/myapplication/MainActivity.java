@@ -121,6 +121,8 @@ public class MainActivity extends Activity {
                 Intent intent = new Intent(MainActivity.this, ShowCanchasActivity.class);
                 intent.putExtra("idcomplejo", datoPulsado);
                 startActivity(intent);
+                Log.e("idComplejo",datoPulsado);
+
             }
         });
 

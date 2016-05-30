@@ -27,7 +27,7 @@ public class ShowCanchasActivity extends Activity {
 
     private static final String TAG = ShowCanchasActivity.class.getSimpleName();
 
-    private static String url = "http://webserviceotro.azurewebsites.net/obtener_canchasbyid.php?idcanchas=";
+
     private ProgressDialog pDialog;
     private List<Cancha> canchaList = new ArrayList<Cancha>();
     private ListView listView;
@@ -40,6 +40,7 @@ public class ShowCanchasActivity extends Activity {
 
         Bundle bundle= getIntent().getExtras();
         String id = bundle.getString("idcomplejo");
+        String url = "http://webserviceotro.azurewebsites.net/obtener_canchasbyid.php?idcanchas=";
 
         url= url+id+".php";
         Log.e("Url"," "+url);
@@ -126,7 +127,7 @@ public class ShowCanchasActivity extends Activity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        this.finish();
+        finish();
     }
 
 }
