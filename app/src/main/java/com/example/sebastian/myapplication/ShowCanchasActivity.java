@@ -2,11 +2,16 @@ package com.example.sebastian.myapplication;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -27,7 +32,7 @@ public class ShowCanchasActivity extends Activity {
 
     private static final String TAG = ShowCanchasActivity.class.getSimpleName();
 
-    private static String url = "http://webserviceotro.azurewebsites.net/obtener_canchasbyid.php?idcanchas=";
+
     private ProgressDialog pDialog;
     private List<Cancha> canchaList = new ArrayList<Cancha>();
     private ListView listView;
@@ -40,6 +45,7 @@ public class ShowCanchasActivity extends Activity {
 
         Bundle bundle= getIntent().getExtras();
         String id = bundle.getString("idcomplejo");
+        String url = "http://webserviceotro.azurewebsites.net/obtener_canchasbyid.php?idcanchas=";
 
         url= url+id+".php";
         Log.e("Url"," "+url);
@@ -108,6 +114,26 @@ public class ShowCanchasActivity extends Activity {
 
         // Adding request to request queue
         AppController.getInstance().addToRequestQueue(canchaReq);
+
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //String datoPulsado = (parent.getAdapter().getItem(position)).toString();
+
+                String datoPulsado = ((TextView) view.findViewById(R.id.txtCanchaId)).getText().toString();
+                //Log.e("datoPulsado", datoPulsado);
+
+                Toast.makeText(ShowCanchasActivity.this, datoPulsado, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(ShowCanchasActivity.this, AddReservas.class);
+                intent.putExtra("idcancha", datoPulsado);
+
+                startActivity(intent);
+                //Log.e("idComplejo",datoPulsado);
+
+            }
+        });
+
     }
 
     @Override
@@ -126,7 +152,7 @@ public class ShowCanchasActivity extends Activity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        this.finish();
+        finish();
     }
 
 }

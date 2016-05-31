@@ -18,6 +18,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -42,12 +43,12 @@ public class MainActivity extends Activity {
     private List<Movie> movieList = new ArrayList<Movie>();
     private ListView listView;
     private CustomListAdapter adapter;
-    private int idC;
+
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
-    private GoogleApiClient client;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,9 +122,17 @@ public class MainActivity extends Activity {
                 Intent intent = new Intent(MainActivity.this, ShowCanchasActivity.class);
                 intent.putExtra("idcomplejo", datoPulsado);
                 startActivity(intent);
+                Log.e("idComplejo",datoPulsado);
+
             }
         });
 
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater inflater = getMenuInflater();
+                inflater.inflate(R.menu.menu_principal, menu);
+        return true;
     }
 
 
