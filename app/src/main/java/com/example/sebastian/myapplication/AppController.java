@@ -1,6 +1,7 @@
 package com.example.sebastian.myapplication;
 
 import android.app.Application;
+import android.content.Context;
 import android.text.TextUtils;
 
 import com.android.volley.Request;
@@ -16,6 +17,7 @@ public class AppController extends Application {
 
     private RequestQueue mRequestQueue;
     private ImageLoader mImageLoader;
+    private static Context mAppContext;
 
     private static AppController mInstance;
 
@@ -61,5 +63,8 @@ public class AppController extends Application {
         if (mRequestQueue != null) {
             mRequestQueue.cancelAll(tag);
         }
+    }
+    public static Context getAppContext() {
+        return mAppContext;
     }
 }
